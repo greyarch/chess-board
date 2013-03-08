@@ -1,0 +1,67 @@
+<head>
+    <title>chess-board</title>
+</head>
+
+<body>
+    {{> navigation}}
+    {{> board}}
+</body>
+
+<template name="navigation">
+    <div class="navbar navbar-inverse">
+        <div class="navbar-inner">
+            <div class="container">
+                <a class="brand" href="/">CHESS BOARD</a>
+                <ul class="nav">
+                    <li><button id="reset" type="button" class="btn btn-danger">Reset the board</button></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</template>
+
+<template name="board">
+    <div class="container">
+        <div class="row">
+            <div class="span7">
+                <table id="chess_board" cellpadding="0" cellspacing="0">
+                    {{#each game.pieces}}
+                    {{> row}}
+                    {{/each}}
+                </table>
+            </div>
+            <div class="span3">
+                <div class="row">
+                    <div>
+                        <ul id="messages">
+                            {{#each game.messages}}
+                            <li><span {{#if isMove}} class="label label-info"{{/if}}>{{text}}</span></li>
+                            {{/each}}
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="row">
+                    Your move: <input id="message">
+                </div>
+
+            </div>
+        </div>
+    </div>
+</template>
+
+<template name="row">
+    <tr>
+        {{#each this}}
+        <td>
+            <div>
+                {{#if this}}
+                <span class="piece" style="cursor: move" draggable="true">
+                    &#98{{this}};
+                </span>
+                {{/if}}
+            </div>
+        </td>
+        {{/each}}
+    </tr>
+</template>
