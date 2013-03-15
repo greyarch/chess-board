@@ -4,8 +4,13 @@
 
 <body>
     {{> navigation}}
-    {{> board}}
+    {{renderPage}}
 </body>
+
+<template name="start">
+    <button id="new-board" type="button" class="btn btn-success">Create new board</button>
+</template>
+
 
 <template name="navigation">
     <div class="navbar navbar-inverse">
@@ -64,4 +69,8 @@
         </td>
         {{/each}}
     </tr>
+</template>
+
+<template name="not_found">
+    Ummm, there's nothing here...
 </template>
