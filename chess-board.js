@@ -48,7 +48,7 @@ if (Meteor.isClient) {
                 } else {
                     messages.push({text: msg, isMove: false});
                 }
-                    Games.update({_id: Session.get('boardId')}, {$set: {pieces: game.pieces, messages: messages}});
+                Games.update({_id: Session.get('boardId')}, {$set: {pieces: game.pieces, messages: messages}});
                 $('input#message').val("");
             }
         }
