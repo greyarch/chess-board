@@ -3,54 +3,71 @@
 </head>
 
 <body>
-    {{> navigation}}
-    {{renderPage}}
+    <div class="container">
+        {{> navigation}}
+        {{renderPage}}
+    </div>
 </body>
 
 <template name="start">
-    <button id="new-board" type="button" class="btn btn-success">Create new board</button>
+    
 </template>
 
 
 <template name="navigation">
     <div class="navbar navbar-inverse">
         <div class="navbar-inner">
-            <div class="container">
-                <a class="brand" href="/">CHESS BOARD</a>
-                <ul class="nav">
-                    <li><button id="reset" type="button" class="btn btn-danger">Reset the board</button></li>
-                </ul>
-            </div>
+            <a class="brand" href="/">CHESS BOARD</a>
+            <ul class="nav pull-right">
+                {{#if onBoard}}
+                <li><button id="reset" type="button" class="btn btn-danger">Reset the board</button></li>
+                {{else}}
+                <li><button id="new-board" type="button" class="btn btn-success">Create new board</button></li>
+                {{/if}}
+            </ul>
         </div>
     </div>
 </template>
 
 <template name="board">
-    <div class="container">
-        <div class="row">
-            <div class="span7">
-                <table id="chess_board" cellpadding="0" cellspacing="0">
-                    {{#each game.pieces}}
-                    {{> row}}
-                    {{/each}}
-                </table>
-            </div>
-            <div class="span3">
-                <div class="row">
-                    <div>
-                        <ul id="messages">
-                            {{#each game.messages}}
-                            <li><span {{#if isMove}} class="label label-info"{{/if}}>{{text}}</span></li>
-                            {{/each}}
-                        </ul>
-                    </div>
+    <div class="row">
+        <div class="span1">
+            <ul id="num-rows">
+                <li>8</li>
+                <li>7</li>
+                <li>6</li>
+                <li>5</li>
+                <li>4</li>
+                <li>3</li>
+                <li>2</li>
+                <li>1</li>
+            </ul>
+        </div>
+        <div class="span7">
+            <table id="chess_board" cellpadding="0" cellspacing="0">
+                {{#each game.pieces}}
+                {{> row}}
+                {{/each}}
+            </table>
+            <ul id="abc-colls">
+                <li>A</li><li>B</li><li>C</li><li>D</li><li>E</li><li>F</li><li>G</li><li>H</li>
+            </ul>
+        </div>
+        <div class="span3">
+            <div class="row messages">
+                <div>
+                    <ul id="messages">
+                        {{#each game.messages}}
+                        <li><span {{#if isMove}} class="label label-info"{{/if}}>{{text}}</span></li>
+                        {{/each}}
+                    </ul>
                 </div>
-
-                <div class="row">
-                    Your move: <input id="message">
-                </div>
-
             </div>
+
+            <div class="row">
+                Your move: <input id="message">
+            </div>
+
         </div>
     </div>
 </template>

@@ -38,8 +38,44 @@
 }
 
 #messages li {
-    list-style: none;
     margin: 0;
     padding: 0.25em;
     border-top: 1px solid gray;
+}
+
+div.messages {
+    max-height: 680px; 
+    overflow-y: auto; 
+    margin-bottom: 5px;
+}
+
+ul {
+    list-style-type: none;
+}
+
+ul#num-rows li {
+    padding-top: 35px;
+    height:45px;
+    text-align:center;
+    vertical-align:middle;
+    width:80px;
+    font-size:60px;
+    color: lightgrey;
+}
+
+ul#abc-colls {
+    padding-top: 20px;
+    height:50px;
+    font-size:60px;
+    color: lightgrey;
+    margin-left: 0;
+    margin-bottom: 0;
+}
+
+ul#abc-colls li {
+    width:81px;
+    display: inline-block;
+    margin-left: 0;
+    margin-right: 0;
+    text-align: center;
 }
