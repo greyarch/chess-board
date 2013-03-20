@@ -22,12 +22,7 @@ if (Meteor.isClient) {
         },
         '*': 'not_found'
     });
-    Template.start.events = {
-        'click button#new-board': function(e) {
-            var boardId = Games.insert(createBoard());
-            Meteor.Router.to("/board/" + boardId);
-        }
-    };
+
     Template.board.game = function() {
         return Games.findOne({_id: Session.get('boardId')});
     };
@@ -49,11 +44,17 @@ if (Meteor.isClient) {
             }
         }
     };
+
     Template.navigation.events = {
         'click button#reset': function() {
             Games.update({_id: Session.get('boardId')}, {$set: createBoard()});
+        },
+        'click button#new-board': function(e) {
+            var boardId = Games.insert(createBoard());
+            Meteor.Router.to("/board/" + boardId);
         }
     };
+
     Template.navigation.onBoard = function() {
         return Session.get('boardId');
     };
