@@ -12,7 +12,6 @@ createBoard = function() {
 }
 
 Games = new Meteor.Collection("games");
-
 if (Meteor.isClient) {
     Meteor.Router.add({
         '/': 'start',
@@ -23,18 +22,15 @@ if (Meteor.isClient) {
         },
         '*': 'not_found'
     });
-
     Template.start.events = {
         'click button#new-board': function(e) {
             var boardId = Games.insert(createBoard());
             Meteor.Router.to("/board/" + boardId);
         }
     };
-
     Template.board.game = function() {
         return Games.findOne({_id: Session.get('boardId')});
     };
-
     Template.board.events = {
         'keypress input#message': function(e) {
             if (e.charCode == '13') {
@@ -53,11 +49,13 @@ if (Meteor.isClient) {
             }
         }
     };
-
     Template.navigation.events = {
         'click button#reset': function() {
             Games.update({_id: Session.get('boardId')}, {$set: createBoard()});
         }
+    };
+    Template.navigation.onBoard = function() {
+        return Session.get('boardId');
     };
 
     move = function(pieces, m) {
