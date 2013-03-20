@@ -75,14 +75,12 @@
 <template name="row">
     <tr>
         {{#each this}}
-        <td>
-            <div>
-                {{#if this}}
-                <span class="piece" style="cursor: move" draggable="true">
-                    &#98{{this}};
-                </span>
-                {{/if}}
+        <td class="dropzone" id="{{location}}">
+            {{#if value}}
+            <div class="piece" style="cursor: move" draggable="true">
+                &#98{{value}};
             </div>
+            {{/if}}
         </td>
         {{/each}}
     </tr>

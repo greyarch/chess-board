@@ -2,10 +2,15 @@
     color:#000;
     display:block;
     font-size:60px;
-    position:relative;
+    margin-top:30px;
     text-decoration:none;
     text-shadow:0 1px #fff;
     width:80px;
+    height:50px;
+    text-align:center;
+}
+.dropzone {
+	
 }
 #chess_board { border:5px solid #333; }
 #chess_board td {
@@ -15,10 +20,9 @@
     box-shadow:inset 0 0 0 1px #fff;
     -moz-box-shadow:inset 0 0 0 1px #fff;
     -webkit-box-shadow:inset 0 0 0 1px #fff;
-    height:80px;
-    text-align:center;
-    vertical-align:middle;
     width:80px;
+    height:80px;
+    border: 1px solid red;
 }
 #chess_board tr:nth-child(odd) td:nth-child(even),
 #chess_board tr:nth-child(even) td:nth-child(odd) {

@@ -1,3 +1,2 @@
 chess-board
 ===========
-test
