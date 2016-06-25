@@ -1,0 +1,91 @@
+<head>
+    <title>Virtual Chess Board</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.1.3/material.indigo-pink.min.css">
+    <script defer src="https://code.getmdl.io/1.1.3/material.min.js"></script>
+</head>
+
+<template name="mainLayout">
+  <main>
+    {{>Template.dynamic template=content}}
+  </main>
+</template>
+
+<template name="navigation">
+  <button id="rotate" class="mdl-button mdl-js-button mdl-button--raised" style="width: 100%;">
+    Rotate the board
+  </button>
+  <p></p>
+  <button id="reset" class="mdl-button mdl-js-button mdl-button--raised" style="width: 100%;">
+    Reset the board
+  </button>
+</template>
+
+<template name="board">
+  <div class="mdl-grid">
+    <div class="mdl-cell mdl-cell--1-col">
+      <ul id="num-rows">
+          {{#each boardRows}}<li>{{this}}</li>{{/each}}
+      </ul>
+    </div>
+    <div class="mdl-cell mdl-cell--7-col">
+      {{{render_board game.pieces}}}
+      <ul id="abc-colls">
+          {{#each boardCols}}<li>{{this}}</li>{{/each}}
+      </ul>
+    </div>
+
+    <div class="mdl-cell mdl-cell--3-col">
+      {{>navigation}}
+      <div id="offboard_pieces">
+          {{{render_piece 'wp'}}}
+          {{{render_piece 'wr'}}}
+          {{{render_piece 'wn'}}}
+          {{{render_piece 'wb'}}}
+          {{{render_piece 'wq'}}}
+          {{{render_piece 'wk'}}}
+          {{{render_piece 'bp'}}}
+          {{{render_piece 'br'}}}
+          {{{render_piece 'bn'}}}
+          {{{render_piece 'bb'}}}
+          {{{render_piece 'bq'}}}
+          {{{render_piece 'bk'}}}
+      </div>
+      <!-- <div id="chat_box">
+          <div id="messages" class="messages">
+              <ul>
+                  {{#each game.messages}}
+                  <li>{{#if isMove}}<i class="icon-hand-right"></i> {{/if}}{{text}}</li>
+                  {{/each}}
+              </ul>
+              <div class="mdl-textfield mdl-js-textfield">
+                <input class="mdl-textfield__input" type="text" id="message">
+                <label class="mdl-textfield__label" for="message">Speak the words of war!</label>
+              </div>
+          </div>
+      </div> -->
+
+    </div>
+    <div class="mdl-grid">
+
+      <!-- <div id="offboard_pieces">
+          {{{render_piece 'wp'}}}
+          {{{render_piece 'wr'}}}
+          {{{render_piece 'wn'}}}
+          {{{render_piece 'wb'}}}
+          {{{render_piece 'wq'}}}
+          {{{render_piece 'wk'}}}
+          {{{render_piece 'bp'}}}
+          {{{render_piece 'br'}}}
+          {{{render_piece 'bn'}}}
+          {{{render_piece 'bb'}}}
+          {{{render_piece 'bq'}}}
+          {{{render_piece 'bk'}}}
+      </div> -->
+    </div>
+  </div>
+</template>
+
+<template name="not_found">
+    Ummm, there's nothing here...
+</template>

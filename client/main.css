@@ -1,0 +1,102 @@
+.piece {
+    color:#000;
+    display:block;
+    font-size:60px;
+    text-decoration:none;
+    text-shadow:0 1px #fff;
+    width:80px;
+    cursor: move;
+    text-align:center;
+    height: 100%;
+}
+
+#offboard_pieces {
+  margin-top: 10px;
+}
+
+.offboard_piece {
+    margin: 10px;
+    font-size:80px;
+    text-decoration:none;
+    text-shadow:0 1px #fff;
+    cursor: move;
+    text-align:center;
+    height: 100%;
+    padding-top: 20px;
+    display:inline-block;
+}
+
+#chess_board { border:5px solid #333; }
+#chess_board td {
+    background:#fff;
+    background:-moz-linear-gradient(top, #fff, #eee);
+    background:-webkit-gradient(linear,0 0, 0 100%, from(#fff), to(#eee));
+    box-shadow:inset 0 0 0 1px #fff;
+    -moz-box-shadow:inset 0 0 0 1px #fff;
+    -webkit-box-shadow:inset 0 0 0 1px #fff;
+    width:80px;
+    height:50px;
+    padding-top: 30px;
+}
+#chess_board tr:nth-child(odd) td:nth-child(even),
+#chess_board tr:nth-child(even) td:nth-child(odd) {
+    background:#ccc;
+    background:-moz-linear-gradient(top, #ccc, #eee);
+    background:-webkit-gradient(linear,0 0, 0 100%, from(#ccc), to(#eee));
+    box-shadow:inset 0 0 10px rgba(0,0,0,.4);
+    -moz-box-shadow:inset 0 0 10px rgba(0,0,0,.4);
+    -webkit-box-shadow:inset 0 0 10px rgba(0,0,0,.4);
+}
+
+#messages {
+    padding-left: 0;
+    margin-left: 0;
+    width: 100%;
+    overflow-y: auto;
+    margin-bottom: 5px;
+    max-height: 580px;
+}
+
+#chat_box {
+    border-bottom: 1px solid gray;
+    margin-bottom: 5px;
+    min-height: 610px;
+}
+
+#messages li {
+    margin: 0;
+    padding: 0.25em;
+    border-top: 1px solid gray;
+}
+
+ul {
+    list-style-type: none;
+}
+
+ul#num-rows li {
+    padding-top: 35px;
+    height:45px;
+    text-align:center;
+    vertical-align:middle;
+    width:80px;
+    font-size:60px;
+    color: lightgrey;
+}
+
+ul#abc-colls {
+    margin-top: 30px;
+    padding-left: 0;
+    height:50px;
+    font-size:60px;
+    color: lightgrey;
+    margin-left: 0;
+    margin-bottom: 0;
+}
+
+ul#abc-colls li {
+    width:81px;
+    display: inline-block;
+    margin-left: 0;
+    margin-right: 0;
+    text-align: center;
+}
