@@ -1,6 +1,6 @@
 var PIECE_SET = {
-    WP: '&#9817', WR: '&#9814', WN: '&#9816', WB: '&#9815', WQ: '&#9813', WK: '&#9812',
-    BP: '&#9823', BR: '&#9820', BN: '&#9822', BB: '&#9821', BQ: '&#9819', BK: '&#9818',
+    WP: '♙', WR: '♖', WN: '♘', WB: '♗', WQ: '♕', WK: '♔',
+    BP: '♟', BR: '♜', BN: '♞', BB: '♝', BQ: '♛', BK: '♚',
 };
 
 var EMPTY = '';
@@ -37,7 +37,6 @@ Template.board.helpers({
   },
 
   render_board: function(pieces) {
-      console.log("pieces: ", pieces);
       var boardHtml = '<table id="chess_board" cellpadding="0" cellspacing="0">';
       var reverse = Session.get("reverse_board");
       for (var row in BOARD_ROWS[reverse]) {
@@ -79,6 +78,7 @@ Template.board.events({
     },
 
     'drop .dropzone': function(e) {
+      console.log(e.originalEvent.dataTransfer.getData("piece"));
       var targetId = e.target.id ? e.target.id : e.target.parentNode.id;
       var sourceId = e.originalEvent.dataTransfer.getData("source_id");
       var piece = e.originalEvent.dataTransfer.getData("piece");
@@ -137,22 +137,23 @@ var addMessage = function(msg) {
 
 var movePiece = function(from, to) {
     var game = getCurrentGame();
-    game.pieces[to] = game.pieces[from];
+    game.pieces[to] = piece = game.pieces[from];
     game.pieces[from] = EMPTY;
     Games.update({_id: getBoardId()}, {$set: {pieces: game.pieces},
-        $push: {messages: {text: from + "-" + to, isMove: true}}});
+        $push: {messages: {text: `${piece} ${from} - ${to}`, isMove: true}}});
 };
 
 var putPiece = function(piece, pos) {
     var game = getCurrentGame();
     game.pieces[pos] = piece;
     Games.update({_id: getBoardId()}, {$set: {pieces: game.pieces},
-        $push: {messages: {text: "Put " + piece + " on " + pos, isMove: true}}});
+        $push: {messages: {text: `Put ${piece} on ${pos}`, isMove: true}}});
 };
 
 var removePiece = function(pos) {
     var game = getCurrentGame();
+    piece = game.pieces[pos]
     game.pieces[pos] = EMPTY;
     Games.update({_id: getBoardId()}, {$set: {pieces: game.pieces},
-        $push: {messages: {text: "Removed the piece on " + pos, isMove: true}}});
+        $push: {messages: {text: `Removed ${piece} from ${pos}`, isMove: true}}});
 };
